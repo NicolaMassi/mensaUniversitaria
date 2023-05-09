@@ -22,18 +22,22 @@ public class Studente implements Runnable {
         
       for (int i = 0; i < 10; i++) {
         if (Ristorante.contenitori[i] > 0) {
-          System.out.println(id + ": sto mettendo il vassoio...");
+          System.out.println(id + ": sto mettendo il vassoio...(contenutore n. "+  (i+1) +")");
           Ristorante.contenitori[i]--; // diminuisco il numero di slot liberi nei contenitori
           Counter counter = new Counter(sCont);
-          Thread t = new Thread(counter);
-          t.start();
+          synchronized(Studente.class){
+            Thread t = new Thread(counter);
+            t.start();
+          }
+          
+
+          if (Ristorante.contenitori[i] == 0) {
+            System.out.println("Contenitore " + i + " pieno!!!");
+            sCam.V(); // attivo il cameriere
+          }
           break;
         }
         
-        if (Ristorante.contenitori[i] == 0) {
-            System.out.println("Contenitore " + i + " pieno!!!");
-            sCam.V(); // attivo il cameriere
-        }
       }
     } catch (Exception ex) {ex.printStackTrace();}
   }

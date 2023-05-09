@@ -4,6 +4,7 @@ public class Cameriere implements Runnable{
   private int id;
   private Semaforo sCam;
   private Semaforo sStud;
+  private boolean istrue = true;
 
   public Cameriere(int id, Semaforo sStud, Semaforo sCam ){
     this.id = id;
@@ -27,7 +28,7 @@ public class Cameriere implements Runnable{
             } catch (Exception ex) {ex.printStackTrace();}
       
             Ristorante.contenitori[i] = 20;
-            System.out.println(id + ": Cameriere ha svuotato il contenitore.");
+            System.out.println(id + ": Cameriere ha svuotato il " + (i + 1) + " contenitore.");
             
             for(int j = 0; j < 20; j++){
               sStud.V();
