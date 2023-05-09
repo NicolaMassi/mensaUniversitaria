@@ -10,7 +10,7 @@ public class Counter implements Runnable {
     @Override
     public void run() {
         semaforo.P();
-        Ristorante.vassoiTot += 20;
+        Ristorante.vassoiTot += 1;
         
         System.out.println("Vassoi totali inseriti: " + Ristorante.vassoiTot);
         semaforo.V();

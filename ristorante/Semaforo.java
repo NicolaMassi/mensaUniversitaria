@@ -20,19 +20,17 @@ public class Semaforo {
     
     public synchronized void V() {
         slotDisponibili++;
-        
         notify();
     }
     
     public synchronized void P() {
         while (slotDisponibili <= 0) {
             try {
-                wait(100);
+                wait(200);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Semaforo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
         slotDisponibili--;
     }
 }

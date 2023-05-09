@@ -12,19 +12,20 @@ public class Ristorante {
   public static void main(String args[]) {
     Thread tsS[] = new Thread[400];
     Thread tsC[] = new Thread[4];
+    
 
     for(int i = 0; i < 10; i++){
       Ristorante.contenitori[i] = 20;
     }
 
     for (int i = 0; i < 400; i++) {
-      Studente s = new Studente(i + 1);
+      Studente s = new Studente(i + 1, sStud, sCam, cont);
       tsS[i] = new Thread(s);
       tsS[i].start();
     }
 
     for (int i = 0; i < 4; i++) {
-      Cameriere c = new Cameriere(i + 1);
+      Cameriere c = new Cameriere(i + 1, sStud, sCam);
       tsC[i] = new Thread(c);
       tsC[i].start();
     }
@@ -40,5 +41,7 @@ public class Ristorante {
         tsC[i].join();
       } catch (InterruptedException e) {e.printStackTrace();}
     }
+    System.out.println(vassoiTot);
   }
+
 }
