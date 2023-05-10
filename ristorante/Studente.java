@@ -29,7 +29,6 @@ public class Studente implements Runnable {
             Thread t = new Thread(counter);
             t.start();
           }
-          
 
           if (Ristorante.contenitori[i] == 0) {
             System.out.println("Contenitore " + i + " pieno!!!");
