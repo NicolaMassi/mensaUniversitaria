@@ -4,7 +4,6 @@ public class Cameriere implements Runnable{
   private int id;
   private Semaforo sCam;
   private Semaforo sStud;
-  private boolean istrue = true;
 
   public Cameriere(int id, Semaforo sStud, Semaforo sCam ){
     this.id = id;

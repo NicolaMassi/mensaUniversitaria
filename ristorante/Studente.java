@@ -25,10 +25,9 @@ public class Studente implements Runnable {
           System.out.println(id + ": sto mettendo il vassoio...(contenutore n. "+  (i+1) +")");
           Ristorante.contenitori[i]--; // diminuisco il numero di slot liberi nei contenitori
           Counter counter = new Counter(sCont);
-          synchronized(Studente.class){
-            Thread t = new Thread(counter);
-            t.start();
-          }
+          Thread t = new Thread(counter);
+          t.start();
+          
 
           if (Ristorante.contenitori[i] == 0) {
             System.out.println("Contenitore " + i + " pieno!!!");
